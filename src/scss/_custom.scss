@@ -1,0 +1,26 @@
+/* Topography */
+$font-family-sans-serif: "Poppins", sans-serif;
+$font-family-serif: "Roboto Slab", serif;
+
+/* Colors */
+$primary: #065f7f;
+$secondary: #fa6a2c;
+$tertiary: #0055f4;
+$black: #242324;
+$white: #ffffff;
+
+/* @TODO: Fix hover colors */
+$hover-bg: $tertiary; // @todo: fix?
+$link-hover-color: darken($primary, 10%); // ??
+
+/* Cards */
+$card-border-radius: 0.5rem;
+
+/* Dropdowns */
+$dropdown-padding-y: 0;
+$dropdown-item-padding-y: 0.75rem;
+$dropdown-divider-margin-y: 0;
+
+/* Links */
+$link-decoration: none;
+$link-hover-decoration: underline;

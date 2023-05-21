@@ -1,0 +1,116 @@
+import { useContext, useEffect, useState } from "react";
+import { Button, Form, Stack } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../../contexts/AuthContext";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { baseApiUrl } from "../../config/App";
+import AlertBox from "../../components/Common/AlertBox";
+
+export default function LoginForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+  const [auth, setAuth] = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const loginUrl = baseApiUrl + "/social/auth/login";
+
+  const formSchema = yup.object().shape({
+    email: yup
+      .string()
+      .email("Must be a valid email address.")
+      // .matches(
+      //   /@(stud\.)?noroff.no/,
+      //   "Must be a @stud.noroff.no or @noroff.no email address."
+      // )
+      .required("Email field is required"),
+    password: yup.string().required("Password field is required."),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(formSchema) });
+
+  function login(data) {
+    setIsSubmitting(true);
+    axios
+      .post(loginUrl, data)
+      .then((response) => {
+        setAuth(response.data);
+        navigate("/posts");
+      })
+      .catch((error) => {
+        setError(error);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  }
+
+  useEffect(() => {
+    if (auth) {
+      // navigate("/posts");
+    }
+  });
+
+  return (
+    <Stack direction="vertical" gap={3} className="col-md-4 mx-auto">
+      <Form onSubmit={handleSubmit(login)}>
+        {error && (
+          <AlertBox
+            message={error.response.data.errors[0].message}
+            level="danger"
+          />
+        )}
+        <fieldset disabled={isSubmitting}>
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Email address"
+              {...register("email")}
+            />
+            {errors.email && (
+              <Form.Text className="text-danger text-sm">
+                {errors.email.message}
+              </Form.Text>
+            )}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              {...register("password")}
+            />
+            {errors.password && (
+              <Form.Text className="text-danger text-sm">
+                {errors.password.message}
+              </Form.Text>
+            )}
+          </Form.Group>
+        </fieldset>
+
+        <Form.Group className="d-flex align-items-baseline justify-content-between">
+          <Button
+            size="lg"
+            className="px-5"
+            type="submit"
+            disabled={isSubmitting}
+          >
+            Login
+          </Button>
+          <p>
+            Not registered? <Link>Sign up here!</Link>
+          </p>
+        </Form.Group>
+      </Form>
+    </Stack>
+  );
+}
