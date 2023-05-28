@@ -5,9 +5,27 @@
 @import "partials/topography";
 @import "partials/sizing";
 @import "partials/colors";
+@import "partials/comment";
+@import "partials/avatar";
 
-.comment {
-  background-color: darken($gray-100, 1%);
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
+.profile__header {
+  position: relative;
+  min-height: 20rem;
+  max-height: 22rem;
+
+  & .profile__avatar {
+    height: 10rem;
+    width: 10rem;
+    background-color: white;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, 50%);
+    border: 1px solid $white;
+  }
 }

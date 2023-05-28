@@ -38,5 +38,5 @@ LoadingIndicator.propTypes = {
     "dark",
   ]),
   animation: PropTypes.oneOf(["border", "grow"]),
-  size: PropTypes.oneOf(["sm"]),
+  size: PropTypes.oneOf(["sm", null]),
 };

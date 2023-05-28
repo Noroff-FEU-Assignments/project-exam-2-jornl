@@ -28,7 +28,9 @@ export default function Navigation() {
               </Nav>
               <Nav className="ms-auto">
                 <NavDropdown title={auth.name} id="user-info-dropdown">
-                  <NavDropdown.Item to="/profile">My Profile</NavDropdown.Item>
+                  <NavDropdown.Item href="/profile">
+                    My Profile
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item
                     as="button"
