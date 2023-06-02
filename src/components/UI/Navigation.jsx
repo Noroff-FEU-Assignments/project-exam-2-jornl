@@ -1,16 +1,17 @@
 import { Container, Image, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import appLogo from "@/assets/logo.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
 
 export default function Navigation() {
-  const [auth] = useContext(AuthContext);
+  const [auth, setAuth] = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   return (
     <Navbar expand="md">
       <Container>
-        {/** @todo: Signed in users should be routed to /posts instead of / */}
         <Link to={auth ? "/posts" : "/"} className="navbar-brand">
           <Image src={appLogo} className="h-10 w-10" />
         </Link>
@@ -35,7 +36,9 @@ export default function Navigation() {
                   <NavDropdown.Item
                     as="button"
                     onClick={(e) => {
-                      e.preventDefault;
+                      e.preventDefault();
+                      setAuth(null);
+                      navigate("/login");
                     }}
                   >
                     Logout

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Button, Form, Stack } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -57,10 +57,10 @@ export default function RegisterForm() {
   }
 
   useEffect(() => {
-    if (auth) {
-      //
+    if (auth !== null) {
+      navigate("/posts");
     }
-  }, [auth]);
+  }, []);
 
   return (
     <Stack direction="vertical" gap={3} className="col-md-4 mx-auto">
