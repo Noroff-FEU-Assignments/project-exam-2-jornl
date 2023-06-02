@@ -5,15 +5,19 @@ import { useContext, useEffect, useState } from "react";
 import { baseApiUrl } from "@/config/App";
 import AuthContext from "@/contexts/AuthContext";
 import LoadingIndicator from "@/components/Common/LoadingIndicator";
-import PostList from "@/components/UI/PostList";
+import PostList from "@/components/UI/Post/PostList";
+import AlertBox from "@/components/Common/AlertBox";
+import { Link } from "react-router-dom";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [auth] = useContext(AuthContext);
 
   const postsUrl =
-    baseApiUrl + "/social/posts?_author=true&_comments=true&_reactions=true";
+    baseApiUrl +
+    "/social/posts?_author=true&_comments=true&_reactions=true&sort=created&sortOrder=desc";
 
   useEffect(() => {
     axios
@@ -24,10 +28,9 @@ export default function Posts() {
       })
       .then((response) => {
         setPosts(response.data);
-        console.log(response);
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.toString());
       })
       .finally(() => {
         setIsLoading(false);
@@ -38,12 +41,21 @@ export default function Posts() {
     return <LoadingIndicator variant="secondary" />;
   }
 
+  if (error) {
+    return (
+      <Container>
+        <AlertBox level="danger" message={error} />
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <Row>
         <Col>
           <Header title="Latest Posts" className="py-3">
             Latest posts
+            <Link to="/posts/create">Create Post</Link>
           </Header>
 
           <PostList posts={posts} />

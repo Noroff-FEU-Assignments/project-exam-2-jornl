@@ -1,37 +1,54 @@
 import { Card, Form, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { formatDistance } from "date-fns";
+import { format, formatDistance } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComment } from "@fortawesome/free-regular-svg-icons";
+import defaultUser from "@/assets/circle-user-regular.svg";
 import Avatar from "@/components/Common/Avatar";
 import Comment from "@/components/UI/Comment";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import AuthContext from "@/contexts/AuthContext";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 export default function PostList({ posts, avatar = "" }) {
+  const [auth] = useContext(AuthContext);
   let userAvatar;
   let userName;
 
   return (
     <div className="d-flex flex-column gap-5">
       {posts.map((post) => {
-        if (post.author === undefined) {
-          userAvatar = avatar;
+        if (!post.author) {
+          userAvatar = avatar && avatar !== "" ? avatar : defaultUser;
           userName = post.owner;
         }
+
         return (
           <Card key={post.id} className="shadow border-0">
             <Card.Body className="px-4">
-              <div className="card__header d-flex">
-                <Avatar
-                  avatar={userAvatar ?? post.author.avatar}
-                  className="h-12 me-2 me-md-3 mb-2 mb-md-3"
-                />
+              <div className="card__header d-flex align-items-center">
+                <Link to={`/profile/${userName ?? post.author.name}`}>
+                  <Avatar
+                    avatar={userAvatar ?? post.author.avatar}
+                    className="h-12 me-2 me-md-3 mb-2 mb-md-3"
+                  />
+                </Link>
                 <div className="flex-grow-1">
-                  <Link className="underline">
+                  <Link
+                    to={`/profile/${userName ?? post.author.name}`}
+                    className="underline"
+                  >
                     {userName ?? post.author.name}
                   </Link>
                   <p className="text-muted d-flex d-md-block justify-content-between">
-                    <span className="me-md-4">
+                    <span
+                      className="me-md-4"
+                      title={format(
+                        new Date(post.created),
+                        "HH:mm:ss dd/MM-yyyy"
+                      )}
+                    >
                       {formatDistance(new Date(post.created), new Date(), {
                         addSuffix: true,
                       })}
@@ -52,11 +69,23 @@ export default function PostList({ posts, avatar = "" }) {
                     )}
                   </p>
                 </div>
+                {(post.author?.name === auth.name ||
+                  userName === auth.name) && (
+                  <>
+                    <Link
+                      to={`/posts/${post.id}/edit`}
+                      className="fw-bold underline"
+                    >
+                      <FontAwesomeIcon icon={faPencil} className="me-2" />
+                      Edit
+                    </Link>
+                  </>
+                )}
               </div>
 
-              <p className="mb-0">
-                <Link className="fw-semibold">{post.title}</Link>
-              </p>
+              <h2 className="mb-1 fw-semibold fs-4">
+                <Link to={`/posts/${post.id}`}>{post.title}</Link>
+              </h2>
               {post.media && (
                 <Image src={post.media} fluid className="my-2 rounded" />
               )}
