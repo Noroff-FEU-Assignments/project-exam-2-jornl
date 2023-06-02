@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Button, Form, Stack } from "react-bootstrap";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "@/contexts/AuthContext";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -50,7 +50,7 @@ export default function LoginForm() {
     if (auth !== null) {
       navigate("/posts");
     }
-  }, []);
+  }, [auth, navigate]);
 
   return (
     <Stack direction="vertical" gap={3} className="col-md-4 mx-auto">

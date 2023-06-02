@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import Comment from "@/components/UI/Comment";
 import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
+import DeletePost from "../DeletePost";
 
 export default function Post({ post, className }) {
   const [auth] = useContext(AuthContext);
@@ -19,7 +20,7 @@ export default function Post({ post, className }) {
   return (
     <Card className={`shadow border-0 ${className}`}>
       <Card.Body className="px-4">
-        <div className="card__header d-flex">
+        <div className="card__header d-flex align-items-center gap-3">
           <Link to={`/profile/${post.author.name}`}>
             <Avatar
               avatar={post.author.avatar}
@@ -39,7 +40,7 @@ export default function Post({ post, className }) {
                   addSuffix: true,
                 })}
               </span>
-              {!post._count ? (
+              {/* {!post._count ? (
                 <></>
               ) : (
                 <>
@@ -51,7 +52,7 @@ export default function Post({ post, className }) {
                     <FontAwesomeIcon icon={faComment} /> {post._count.comments}
                   </span>
                 </>
-              )}
+              )} */}
             </p>
           </div>
           {post.author?.name === auth.name && (
@@ -60,6 +61,7 @@ export default function Post({ post, className }) {
                 <FontAwesomeIcon icon={faPencil} className="me-2" />
                 Edit
               </Link>
+              <DeletePost post={post.id} />
             </>
           )}
         </div>

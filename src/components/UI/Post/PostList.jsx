@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import DeletePost from "../DeletePost";
 
 export default function PostList({ posts, avatar = "" }) {
   const [auth] = useContext(AuthContext);
@@ -27,7 +28,7 @@ export default function PostList({ posts, avatar = "" }) {
         return (
           <Card key={post.id} className="shadow border-0">
             <Card.Body className="px-4">
-              <div className="card__header d-flex align-items-center">
+              <div className="card__header d-flex align-items-center gap-3">
                 <Link to={`/profile/${userName ?? post.author.name}`}>
                   <Avatar
                     avatar={userAvatar ?? post.author.avatar}
@@ -53,7 +54,7 @@ export default function PostList({ posts, avatar = "" }) {
                         addSuffix: true,
                       })}
                     </span>
-                    {!post._count ? (
+                    {/* {!post._count ? (
                       <></>
                     ) : (
                       <>
@@ -66,7 +67,7 @@ export default function PostList({ posts, avatar = "" }) {
                           {post._count.comments}
                         </span>
                       </>
-                    )}
+                    )} */}
                   </p>
                 </div>
                 {(post.author?.name === auth.name ||
@@ -79,6 +80,7 @@ export default function PostList({ posts, avatar = "" }) {
                       <FontAwesomeIcon icon={faPencil} className="me-2" />
                       Edit
                     </Link>
+                    <DeletePost post={post.id} />
                   </>
                 )}
               </div>
