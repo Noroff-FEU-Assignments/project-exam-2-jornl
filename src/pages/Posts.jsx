@@ -19,7 +19,7 @@ export default function Posts() {
     baseApiUrl +
     "/social/posts?_author=true&_comments=true&_reactions=true&sort=created&sortOrder=desc";
 
-  useEffect(() => {
+  function getPosts() {
     axios
       .get(postsUrl, {
         headers: {
@@ -35,7 +35,11 @@ export default function Posts() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [postsUrl, auth.accessToken]);
+  }
+
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   if (isLoading) {
     return <LoadingIndicator variant="secondary" />;
@@ -58,7 +62,7 @@ export default function Posts() {
             <Link to="/posts/create">Create Post</Link>
           </Header>
 
-          <PostList posts={posts} />
+          <PostList posts={posts} getPosts={getPosts} />
         </Col>
       </Row>
     </Container>

@@ -21,7 +21,7 @@ export default function Show() {
     baseApiUrl +
     `/social/posts/${postId}?_author=true&_comments=true&_reactions=true`;
 
-  useEffect(() => {
+  function getPost() {
     axios
       .get(postUrl, {
         headers: {
@@ -38,6 +38,10 @@ export default function Show() {
       .finally(() => {
         setIsLoading(false);
       });
+  }
+
+  useEffect(() => {
+    getPost();
   }, []);
 
   if (isLoading) {
@@ -60,7 +64,7 @@ export default function Show() {
             {post.author.name}&apos;s post
           </Header>
 
-          <Post post={post} className="mt-3" />
+          <Post post={post} className="mt-3" getPosts={getPost} />
         </Col>
       </Row>
     </Container>

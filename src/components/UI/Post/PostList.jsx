@@ -1,18 +1,18 @@
-import { Card, Form, Image } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { format, formatDistance } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faComment } from "@fortawesome/free-regular-svg-icons";
 import defaultUser from "@/assets/circle-user-regular.svg";
 import Avatar from "@/components/Common/Avatar";
-import Comment from "@/components/UI/Comment";
+import Comment from "@/components/UI/Comment/Comment";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import DeletePost from "../DeletePost";
+import CommentForm from "../Comment/CommentForm";
 
-export default function PostList({ posts, avatar = "" }) {
+export default function PostList({ posts, avatar = "", getPosts }) {
   const [auth] = useContext(AuthContext);
   let userAvatar;
   let userName;
@@ -54,20 +54,6 @@ export default function PostList({ posts, avatar = "" }) {
                         addSuffix: true,
                       })}
                     </span>
-                    {/* {!post._count ? (
-                      <></>
-                    ) : (
-                      <>
-                        <span className="me-md-4">
-                          <FontAwesomeIcon icon={faThumbsUp} />{" "}
-                          {post._count.reactions}
-                        </span>
-                        <span className="me-md-4">
-                          <FontAwesomeIcon icon={faComment} />{" "}
-                          {post._count.comments}
-                        </span>
-                      </>
-                    )} */}
                   </p>
                 </div>
                 {(post.author?.name === auth.name ||
@@ -102,9 +88,7 @@ export default function PostList({ posts, avatar = "" }) {
                   ))}
               </div>
 
-              <Form className="mt-4">
-                <Form.Control placeholder="Write a comment" />
-              </Form>
+              <CommentForm post={post.id} getPosts={getPosts} />
             </Card.Body>
           </Card>
         );
@@ -120,4 +104,5 @@ PostList.defaultProps = {
 PostList.propTypes = {
   posts: PropTypes.array,
   avatar: PropTypes.string,
+  getPosts: PropTypes.func,
 };

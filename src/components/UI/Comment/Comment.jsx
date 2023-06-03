@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Avatar from "../Common/Avatar";
+import Avatar from "../../Common/Avatar";
 import PropTypes from "prop-types";
 
 export default function Comment({ comment }) {

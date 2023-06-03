@@ -1,20 +1,17 @@
-import { Card, Form, Image } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "@/components/Common/Avatar";
 import { format, formatDistance } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faComment,
-  faPencil,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
-import Comment from "@/components/UI/Comment";
+import Comment from "@/components/UI/Comment/Comment";
 import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
 import DeletePost from "../DeletePost";
+import CommentForm from "../Comment/CommentForm";
 
-export default function Post({ post, className }) {
+export default function Post({ post, className, getPosts }) {
   const [auth] = useContext(AuthContext);
 
   return (
@@ -40,19 +37,6 @@ export default function Post({ post, className }) {
                   addSuffix: true,
                 })}
               </span>
-              {/* {!post._count ? (
-                <></>
-              ) : (
-                <>
-                  <span className="me-md-4">
-                    <FontAwesomeIcon icon={faThumbsUp} />{" "}
-                    {post._count.reactions}
-                  </span>
-                  <span className="me-md-4">
-                    <FontAwesomeIcon icon={faComment} /> {post._count.comments}
-                  </span>
-                </>
-              )} */}
             </p>
           </div>
           {post.author?.name === auth.name && (
@@ -86,9 +70,7 @@ export default function Post({ post, className }) {
             ))}
         </div>
 
-        <Form className="mt-4">
-          <Form.Control placeholder="Write a comment" />
-        </Form>
+        <CommentForm post={post.id} getPosts={getPosts} />
       </Card.Body>
     </Card>
   );
@@ -114,4 +96,5 @@ Post.propTypes = {
     comments: PropTypes.array,
   }),
   className: PropTypes.string,
+  getPosts: PropTypes.func,
 };
