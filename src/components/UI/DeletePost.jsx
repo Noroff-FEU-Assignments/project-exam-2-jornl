@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { baseApiUrl } from "../../config/App";
+import { baseApiUrl } from "../../data/App";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";

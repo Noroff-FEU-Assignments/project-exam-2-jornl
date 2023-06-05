@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { baseApiUrl } from "@/config/App";
+import { baseApiUrl } from "@/data/App";
 import AlertBox from "@/components/Common/AlertBox";
 import AuthContext from "@/contexts/AuthContext";
 import PropTypes from "prop-types";

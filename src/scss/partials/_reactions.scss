@@ -1,0 +1,7 @@
+.reactions {
+  z-index: 1000;
+  transform: translateY(calc(-100% - 0.75rem));
+  max-height: 15rem;
+  overflow-y: scroll;
+  max-width: 23rem;
+}

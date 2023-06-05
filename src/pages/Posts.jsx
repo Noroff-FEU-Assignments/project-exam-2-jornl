@@ -2,7 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Header from "@/components/Common/Header";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { baseApiUrl } from "@/config/App";
+import { baseApiUrl } from "@/data/App";
 import AuthContext from "@/contexts/AuthContext";
 import LoadingIndicator from "@/components/Common/LoadingIndicator";
 import PostList from "@/components/UI/Post/PostList";

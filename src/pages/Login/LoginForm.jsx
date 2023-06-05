@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import AlertBox from "@/components/Common/AlertBox";
 import axios from "axios";
-import { baseApiUrl } from "@/config/App";
+import { baseApiUrl } from "@/data/App";
 
 export default function LoginForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);

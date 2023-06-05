@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { baseApiUrl } from "@/config/App";
+import { baseApiUrl } from "@/data/App";
 import AuthContext from "@/contexts/AuthContext";
 import AlertBox from "@/components/Common/AlertBox";
 import PropTypes from "prop-types";

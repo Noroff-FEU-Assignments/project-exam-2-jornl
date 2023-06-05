@@ -11,6 +11,7 @@ import AuthContext from "@/contexts/AuthContext";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import DeletePost from "../DeletePost";
 import CommentForm from "../Comment/CommentForm";
+import Reactions from "../Reactions";
 
 export default function PostList({ posts, avatar = "", getPosts }) {
   const [auth] = useContext(AuthContext);
@@ -78,6 +79,12 @@ export default function PostList({ posts, avatar = "", getPosts }) {
                 <Image src={post.media} fluid className="my-2 rounded" />
               )}
               <p className="border-bottom pb-3">{post.body}</p>
+
+              <Reactions
+                reactions={post.reactions}
+                post={post.id}
+                getPosts={getPosts}
+              />
 
               <div className="post__comments mt-3">
                 {/* TODO: Only display 2-3 comments and have a View More button. */}

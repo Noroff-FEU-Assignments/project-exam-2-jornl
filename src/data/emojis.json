@@ -1,0 +1,50 @@
+[
+  {
+    "symbol": "❤️",
+    "description": "heart"
+  },
+  {
+    "symbol": "👌",
+    "description": "ok hand"
+  },
+  {
+    "symbol": "👍",
+    "description": "thumbs up"
+  },
+  {
+    "symbol": "👎",
+    "description": "thumbs down"
+  },
+  {
+    "symbol": "👏",
+    "description": "clap"
+  },
+  {
+    "symbol": "😂",
+    "description": "tears of joy"
+  },
+  {
+    "symbol": "😇",
+    "description": "angel"
+  },
+  {
+    "symbol": "😈",
+    "description": "devil"
+  },
+  {
+    "symbol": "😓",
+    "description": "cold sweating"
+  },
+  {
+    "symbol": "😡",
+    "description": "angry"
+  },
+  {
+    "symbol": "😨",
+    "description": "fearful"
+  },
+  {
+    "symbol":"😭",
+    "description": "crying"
+  }
+]

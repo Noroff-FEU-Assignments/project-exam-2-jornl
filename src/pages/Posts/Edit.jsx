@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { baseApiUrl } from "../../config/App";
+import { baseApiUrl } from "@/data//App";
 import AuthContext from "../../contexts/AuthContext";
 import LoadingIndicator from "../../components/Common/LoadingIndicator";
 import { Col, Container, Row } from "react-bootstrap";

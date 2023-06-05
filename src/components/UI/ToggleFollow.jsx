@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import AuthContext from "@/contexts/AuthContext";
 import AlertBox from "@/components/Common/AlertBox";
 import PropTypes from "prop-types";
-import { baseApiUrl } from "@/config/App";
+import { baseApiUrl } from "@/data/App";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus, faUserSlash } from "@fortawesome/free-solid-svg-icons";

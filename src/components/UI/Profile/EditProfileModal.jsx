@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { baseApiUrl } from "@/config/App";
+import { baseApiUrl } from "@/data/App";
 import AuthContext from "@/contexts/AuthContext";
 
 export default function EditProfileModal({ profile, updateProfile }) {

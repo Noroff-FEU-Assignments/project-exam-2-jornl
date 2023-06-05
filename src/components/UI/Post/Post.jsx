@@ -10,6 +10,7 @@ import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
 import DeletePost from "../DeletePost";
 import CommentForm from "../Comment/CommentForm";
+import Reactions from "../Reactions";
 
 export default function Post({ post, className, getPosts }) {
   const [auth] = useContext(AuthContext);
@@ -61,6 +62,12 @@ export default function Post({ post, className, getPosts }) {
           dangerouslySetInnerHTML={{ __html: post.body }}
         ></p>
 
+        <Reactions
+          reactions={post.reactions}
+          post={post.id}
+          getPosts={getPosts}
+        />
+
         <div className="post__comments mt-3">
           {/* TODO: Only display 2-3 comments and have a View More button. */}
 
@@ -83,6 +90,7 @@ Post.propTypes = {
     body: PropTypes.string,
     media: PropTypes.string,
     created: PropTypes.string,
+    reactions: PropTypes.array,
     _count: PropTypes.shape({
       reactions: PropTypes.number,
       comments: PropTypes.number,

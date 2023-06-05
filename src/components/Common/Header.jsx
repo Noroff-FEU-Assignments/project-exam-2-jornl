@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { appName } from "@/config/App";
+import { appName } from "@/data/App";
 
 export default function Header({ title, as = "h1", className, children }) {
   document.title = title + " - " + appName;

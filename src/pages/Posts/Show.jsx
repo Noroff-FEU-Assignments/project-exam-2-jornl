@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AuthContext from "@/contexts/AuthContext";
-import { baseApiUrl } from "@/config/App";
+import { baseApiUrl } from "@/data/App";
 import axios from "axios";
 import Post from "../../components/UI/Post/Post";
 import Header from "@/components/Common/Header";

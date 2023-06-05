@@ -4,7 +4,7 @@ import ProfileList from "@/components/UI/Profile/ProfileList";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "@/contexts/AuthContext";
 import axios from "axios";
-import { baseApiUrl } from "@/config/App";
+import { baseApiUrl } from "@/data/App";
 import LoadingIndicator from "@/components/Common/LoadingIndicator";
 import AlertBox from "@/components/Common/AlertBox";
 
