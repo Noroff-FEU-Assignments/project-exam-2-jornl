@@ -15,12 +15,15 @@ export default function Home() {
       </Row>
       <Row className="mt-5">
         <Col xs={12} md={6} className="mb-5 mb-md-0">
-          <Link to="/login" className="btn btn-secondary py-3 px-4">
+          <Link
+            to="/login"
+            className="btn btn-secondary py-3 px-4 fw-bold text-white"
+          >
             Login to your account
           </Link>
         </Col>
         <Col xs={12} md={6}>
-          <Link to="/register" className="btn btn-primary py-3 px-4">
+          <Link to="/register" className="btn btn-primary py-3 px-4 fw-bold">
             Create a new account
           </Link>
         </Col>
