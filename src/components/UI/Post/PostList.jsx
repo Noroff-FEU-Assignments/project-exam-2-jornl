@@ -73,29 +73,33 @@ export default function PostList({ posts, avatar = "", getPosts }) {
               </div>
 
               <h2 className="mb-1 fw-semibold fs-4">
-                <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                <Link to={`/posts/${post.id}`}>
+                  {post.title && post.title !== "" ? post.title : "View Post"}
+                </Link>
               </h2>
               {post.media && (
                 <Image src={post.media} fluid className="my-2 rounded" alt="" />
               )}
               <p className="border-bottom pb-3">{post.body}</p>
 
-              <Reactions
-                reactions={post.reactions}
-                post={post.id}
-                getPosts={getPosts}
-              />
+              {post.reactions && (
+                <Reactions
+                  reactions={post.reactions}
+                  post={post.id}
+                  getPosts={getPosts}
+                />
+              )}
 
               <div className="post__comments mt-3">
-                {/* TODO: Only display 2-3 comments and have a View More button. */}
-
                 {post.comments &&
                   post.comments.map((comment) => (
                     <Comment key={comment.id} comment={comment} />
                   ))}
               </div>
 
-              <CommentForm post={post.id} getPosts={getPosts} />
+              {post.comments && (
+                <CommentForm post={post.id} getPosts={getPosts} />
+              )}
             </Card.Body>
           </Card>
         );
