@@ -55,7 +55,7 @@ export default function Post({ post, className, getPosts }) {
           <Link to={`/posts/${post.id}`}>{post.title}</Link>
         </h2>
         {post.media && (
-          <Image src={post.media} fluid className="my-2 rounded" />
+          <Image src={post.media} fluid className="my-2 rounded" alt="" />
         )}
         <p
           className="border-bottom pb-3"

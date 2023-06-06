@@ -13,7 +13,7 @@ export default function Navigation() {
     <Navbar expand="md">
       <Container>
         <Link to={auth ? "/posts" : "/"} className="navbar-brand">
-          <Image src={appLogo} className="h-10 w-10" />
+          <Image src={appLogo} className="h-10 w-10" alt="Logo" />
         </Link>
         {auth && (
           <>

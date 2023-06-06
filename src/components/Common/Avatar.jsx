@@ -6,7 +6,12 @@ export default function Avatar({ avatar, className }) {
   avatar = avatar && avatar !== "" ? avatar : defaultUser;
 
   return (
-    <Image fluid className={`rounded-full avatar ${className}`} src={avatar} />
+    <Image
+      fluid
+      className={`rounded-full avatar ${className}`}
+      src={avatar}
+      alt="user avatar"
+    />
   );
 }
 

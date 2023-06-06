@@ -28,7 +28,11 @@ export default function Profile({ profile, fetchProfile }) {
           backgroundSize: "cover",
         }}
       >
-        <Image src={avatar} className="profile__avatar h-24" />
+        <Image
+          src={avatar}
+          className="profile__avatar h-24"
+          alt={`${profile.name}s avatar`}
+        />
       </div>
       <Container className="py-5">
         <Row>

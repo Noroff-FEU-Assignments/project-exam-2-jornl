@@ -76,7 +76,7 @@ export default function PostList({ posts, avatar = "", getPosts }) {
                 <Link to={`/posts/${post.id}`}>{post.title}</Link>
               </h2>
               {post.media && (
-                <Image src={post.media} fluid className="my-2 rounded" />
+                <Image src={post.media} fluid className="my-2 rounded" alt="" />
               )}
               <p className="border-bottom pb-3">{post.body}</p>
 

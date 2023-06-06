@@ -11,6 +11,7 @@ import Profiles from "./pages/Profiles/List";
 
 import "./scss/main.scss";
 import { AuthProvider } from "./contexts/AuthContext";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
+            <Route index element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/posts" element={<Posts />} />
