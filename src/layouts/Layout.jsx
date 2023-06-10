@@ -8,7 +8,7 @@ export default function Layout() {
       <header>
         <Navigation />
       </header>
-      <main>
+      <main className="mb-5">
         <Outlet />
       </main>
       <footer className="text-center py-4 bg-black text-white">

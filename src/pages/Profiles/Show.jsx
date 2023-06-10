@@ -21,7 +21,8 @@ export default function Show() {
   }
 
   const profileUrl =
-    baseApiUrl + `/social/profiles/${user}?_posts=true&_followers=true`;
+    baseApiUrl +
+    `/social/profiles/${user}?_posts=true&_followers=true&_following=true`;
 
   const fetchProfile = () => {
     axios

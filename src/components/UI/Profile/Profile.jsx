@@ -7,7 +7,8 @@ import EditProfileModal from "./EditProfileModal";
 import Header from "@/components/Common/Header";
 import PostList from "@/components/UI/Post/PostList";
 import PropTypes from "prop-types";
-import ToggleFollow from "../ToggleFollow";
+import ToggleFollow from "./ToggleFollow";
+import FollowModal from "./FollowModal";
 
 export default function Profile({ profile, fetchProfile }) {
   const [auth] = useContext(AuthContext);
@@ -53,7 +54,12 @@ export default function Profile({ profile, fetchProfile }) {
             </Header>
 
             <div className="follow__info mt-5 d-flex justify-content-around align-items-center">
-              <div>{profile._count.followers} Followers</div>
+              <FollowModal
+                title="Followers"
+                count={profile._count.followers}
+                followers={profile.followers}
+              />
+
               {auth.name === profile.name ? (
                 <></>
               ) : (
@@ -63,8 +69,11 @@ export default function Profile({ profile, fetchProfile }) {
                   updateProfile={fetchProfile}
                 />
               )}
-
-              <div>{profile._count.following} Following</div>
+              <FollowModal
+                title="Following"
+                count={profile._count.following}
+                followers={profile.following}
+              />
             </div>
 
             <div className="post__info">
@@ -93,6 +102,7 @@ Profile.propTypes = {
     }),
     posts: PropTypes.array,
     followers: PropTypes.array,
+    following: PropTypes.array,
   }),
   fetchProfile: PropTypes.func,
 };
