@@ -8,6 +8,8 @@ import LoadingIndicator from "@/components/Common/LoadingIndicator";
 import PostList from "@/components/UI/Post/PostList";
 import AlertBox from "@/components/Common/AlertBox";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -57,9 +59,17 @@ export default function Posts() {
     <Container>
       <Row>
         <Col>
-          <Header title="Latest Posts" className="py-3">
+          <Header
+            title="Latest Posts"
+            className="py-3 d-flex justify-content-between align-items-center"
+          >
             Latest posts
-            <Link to="/posts/create">Create Post</Link>
+            <Link
+              className="btn btn-secondary text-white fw-bold"
+              to="/posts/create"
+            >
+              <FontAwesomeIcon icon={faPlus} /> Post
+            </Link>
           </Header>
 
           <PostList posts={posts} getPosts={getPosts} />

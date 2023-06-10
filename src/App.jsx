@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Posts from "./pages/Posts";
+import Posts from "./pages/Posts/List";
 import ShowPost from "./pages/Posts/Show";
 import EditPost from "./pages/Posts/Edit";
 import CreatePost from "./pages/Posts/Create";

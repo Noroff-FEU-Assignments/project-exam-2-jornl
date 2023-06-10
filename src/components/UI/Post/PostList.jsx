@@ -9,9 +9,9 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
-import DeletePost from "../DeletePost";
+import DeletePost from "./DeletePost";
 import CommentForm from "../Comment/CommentForm";
-import Reactions from "../Reactions";
+import Reactions from "./Reactions";
 
 export default function PostList({ posts, avatar = "", getPosts }) {
   const [auth] = useContext(AuthContext);
@@ -78,7 +78,12 @@ export default function PostList({ posts, avatar = "", getPosts }) {
                 </Link>
               </h2>
               {post.media && (
-                <Image src={post.media} fluid className="my-2 rounded" alt="" />
+                <Image
+                  src={post.media}
+                  fluid
+                  className="post__media my-2 rounded"
+                  alt=""
+                />
               )}
               <p className="border-bottom pb-3">{post.body}</p>
 

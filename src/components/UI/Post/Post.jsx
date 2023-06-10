@@ -8,9 +8,9 @@ import PropTypes from "prop-types";
 import Comment from "@/components/UI/Comment/Comment";
 import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
-import DeletePost from "../DeletePost";
+import DeletePost from "./DeletePost";
 import CommentForm from "../Comment/CommentForm";
-import Reactions from "../Reactions";
+import Reactions from "./Reactions";
 
 export default function Post({ post, className, getPosts }) {
   const [auth] = useContext(AuthContext);
