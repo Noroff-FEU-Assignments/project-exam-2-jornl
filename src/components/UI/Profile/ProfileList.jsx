@@ -6,7 +6,7 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { faComments } from "@fortawesome/free-regular-svg-icons";
 import PropTypes from "prop-types";
 
-export default function ProfileList({ profiles }) {
+export default function ProfileList({ profiles, reload = false }) {
   return (
     <div className="d-flex flex-column gap-4">
       {profiles.map((profile) => (
@@ -19,7 +19,7 @@ export default function ProfileList({ profiles }) {
                   <Link
                     className="underline"
                     to={`/profile/${profile.name}`}
-                    reloadDocument
+                    reloadDocument={reload}
                   >
                     {profile.name}
                   </Link>
@@ -50,6 +50,11 @@ export default function ProfileList({ profiles }) {
   );
 }
 
+ProfileList.defaultProps = {
+  reload: false,
+};
+
 ProfileList.propTypes = {
   profiles: PropTypes.array,
+  reload: PropTypes.bool,
 };

@@ -45,7 +45,10 @@ export default function RegisterForm() {
     axios
       .post(registerUrl, data)
       .then(() => {
-        navigate("/"); // @TODO: Fix...?
+        <AlertBox
+          message={`Successfully registered! <Link to="/login">Click here to login.</Link>`}
+          level="success"
+        />;
       })
       .catch((error) => {
         console.log(error);
