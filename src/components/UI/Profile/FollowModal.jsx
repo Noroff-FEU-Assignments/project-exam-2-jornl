@@ -20,7 +20,11 @@ export default function FollowModal({ followers, title, count }) {
           <h2>{title}</h2>
         </Modal.Header>
         <Modal.Body>
-          <ProfileList profiles={followers} reload={true} />
+          {followers.length > 0 ? (
+            <ProfileList profiles={followers} reload={true} />
+          ) : (
+            <p>No one :-(</p>
+          )}
         </Modal.Body>
       </Modal>
     </>

@@ -64,10 +64,7 @@ export default function Posts() {
             className="py-3 d-flex justify-content-between align-items-center"
           >
             Latest posts
-            <Link
-              className="btn btn-secondary text-white fw-bold"
-              to="/posts/create"
-            >
+            <Link className="btn btn-primary fw-bold" to="/posts/create">
               <FontAwesomeIcon icon={faPlus} /> Post
             </Link>
           </Header>

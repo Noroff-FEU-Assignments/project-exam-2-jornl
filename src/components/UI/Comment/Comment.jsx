@@ -6,7 +6,9 @@ export default function Comment({ comment }) {
   return (
     <div className="comment mb-2">
       <div className="comment__userinfo d-flex">
-        <Avatar avatar={comment.author.avatar} className="h-10 me-3 mb-2" />
+        <Link to={`/profile/${comment.author.name}`}>
+          <Avatar avatar={comment.author.avatar} className="h-10 me-3 mb-2" />
+        </Link>
         <Link className="underline" to={`/profile/${comment.author.name}`}>
           {comment.author.name}
         </Link>

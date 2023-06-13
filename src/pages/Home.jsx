@@ -15,10 +15,7 @@ export default function Home() {
       </Row>
       <Row className="mt-5">
         <Col xs={12} md={6} className="mb-5 mb-md-0">
-          <Link
-            to="/login"
-            className="btn btn-secondary py-3 px-4 fw-bold text-white"
-          >
+          <Link to="/login" className="btn btn-secondary py-3 px-4 fw-bold">
             Login to your account
           </Link>
         </Col>

@@ -11,6 +11,7 @@ import AuthContext from "@/contexts/AuthContext";
 
 export default function RegisterForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
   const [auth] = useContext(AuthContext);
 
@@ -19,7 +20,10 @@ export default function RegisterForm() {
   const registerUrl = baseApiUrl + "/social/auth/register";
 
   const formSchema = yup.object().shape({
-    name: yup.string().required("Name field is required."),
+    name: yup
+      .string()
+      .matches(/^[A-Za-z0-9_]+$/, "Name can only contain a-Z, 0-9 and _.")
+      .required("Name field is required."),
     email: yup
       .string()
       .email("Must be a valid email address.")
@@ -44,12 +48,7 @@ export default function RegisterForm() {
     setIsSubmitting(true);
     axios
       .post(registerUrl, data)
-      .then(() => {
-        <AlertBox
-          message={`Successfully registered! <Link to="/login">Click here to login.</Link>`}
-          level="success"
-        />;
-      })
+      .then(() => setSuccess(true))
       .catch((error) => {
         console.log(error);
         setError(error);
@@ -67,6 +66,11 @@ export default function RegisterForm() {
 
   return (
     <Stack direction="vertical" gap={3} className="col-md-4 mx-auto">
+      {success && (
+        <AlertBox level="success">
+          Successfully registered! <Link to="/login">Click here to login.</Link>
+        </AlertBox>
+      )}
       <Form onSubmit={handleSubmit(submitForm)}>
         {error && (
           <AlertBox

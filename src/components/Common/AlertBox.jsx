@@ -8,7 +8,7 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function AlertBox({ message, level = "success" }) {
+export default function AlertBox({ children, level = "success" }) {
   const icons = {
     success: faCircleCheck,
     warning: faCircleExclamation,
@@ -19,7 +19,7 @@ export default function AlertBox({ message, level = "success" }) {
   return (
     <Alert variant={level}>
       <FontAwesomeIcon icon={icons[level]} className="me-3" />
-      {message}
+      {children}
     </Alert>
   );
 }
@@ -29,6 +29,6 @@ AlertBox.defaultProps = {
 };
 
 AlertBox.propTypes = {
-  message: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   level: PropTypes.oneOf(["success", "warning", "danger", "info"]),
 };
