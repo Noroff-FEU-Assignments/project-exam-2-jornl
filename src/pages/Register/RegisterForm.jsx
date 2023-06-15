@@ -27,10 +27,7 @@ export default function RegisterForm() {
     email: yup
       .string()
       .email("Must be a valid email address.")
-      .matches(
-        /@(stud\.)?noroff.no/,
-        "Must be a @stud.noroff.no or @noroff.no email address."
-      )
+      .matches(/@stud.noroff.no/, "Must be a @stud.noroff.no email address.")
       .required("Email field is required"),
     password: yup.string().min(8).required("Password field is required."),
     repeat_password: yup

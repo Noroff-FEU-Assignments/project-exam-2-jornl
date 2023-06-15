@@ -1,10 +1,10 @@
 import { Button } from "react-bootstrap";
-import { baseApiUrl } from "../../../data/App";
+import { baseApiUrl } from "@/data/App";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useContext } from "react";
-import AuthContext from "../../../contexts/AuthContext";
+import AuthContext from "@/contexts/AuthContext";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
