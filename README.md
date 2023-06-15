@@ -301,3 +301,14 @@ In the delivery section I only have 2 tasks, one is to create a style guide and 
 I created 9 pages explaining how to style the project future developers, and I think it's an OK style guide. Not my favorite thing to do, but it's necessary for the styling of the project.
 
 As for delivery I only have to complete this README and submit it to github, then I am done with the assignment. Apart from a few lines of refactoring coming later in the summer, maybe. As I learn more about react in my spare time.
+
+## Resources
+
+- [API documentation](https://noroff-api-docs.netlify.app/social-endpoints/)
+- [Vite documentation](https://vitejs.dev/guide/)
+- [React Bootstrap](https://react-bootstrap.netlify.app/)
+- [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [FontAwesome](https://fontawesome.com/)
+- [Default Avatar Image](https://fontawesome.com/icons/circle-user?f=classic&s=regular)
+- [Default Banner Image](https://unsplash.com/photos/Qe3kgY98OXs)
+- [Welcome page background image](https://unsplash.com/photos/QckxruozjRg)
