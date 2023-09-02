@@ -27,7 +27,7 @@ export default function Profiles() {
         setProfiles(response.data);
       })
       .catch((error) => {
-        setError(error.toString());
+        setError(error);
       })
       .finally(() => setIsLoading(false));
   }, [auth.accessToken, profilesUrl]);
@@ -39,7 +39,7 @@ export default function Profiles() {
   if (error) {
     return (
       <Container>
-        <AlertBox level="danger" message={error} />
+        <AlertBox level="danger">{error.message}</AlertBox>
       </Container>
     );
   }

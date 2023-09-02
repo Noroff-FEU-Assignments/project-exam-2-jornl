@@ -32,8 +32,7 @@ export default function Show() {
         setPost(response.data);
       })
       .catch((error) => {
-        console.log(error);
-        setError(error.toString());
+        setError(error);
       })
       .finally(() => {
         setIsLoading(false);
@@ -51,7 +50,7 @@ export default function Show() {
   if (error) {
     return (
       <Container>
-        <AlertBox level="danger" message={error} />
+        <AlertBox level="danger">{error.message}</AlertBox>
       </Container>
     );
   }

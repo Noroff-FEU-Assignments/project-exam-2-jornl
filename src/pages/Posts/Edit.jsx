@@ -45,7 +45,7 @@ export default function Edit() {
   if (error) {
     return (
       <Container>
-        <AlertBox level="danger" message={error} />
+        <AlertBox level="danger">{error}</AlertBox>
       </Container>
     );
   }

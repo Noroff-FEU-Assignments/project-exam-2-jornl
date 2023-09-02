@@ -47,7 +47,6 @@ export default function RegisterForm() {
       .post(registerUrl, data)
       .then(() => setSuccess(true))
       .catch((error) => {
-        console.log(error);
         setError(error);
       })
       .finally(() => {
@@ -70,10 +69,9 @@ export default function RegisterForm() {
       )}
       <Form onSubmit={handleSubmit(submitForm)}>
         {error && (
-          <AlertBox
-            message={error.response.data.errors[0].message}
-            level="danger"
-          />
+          <AlertBox level="danger">
+            {error.response.data.errors[0].message}
+          </AlertBox>
         )}
         <fieldset disabled={isSubmitting}>
           <Form.Group className="mb-3" controlId="name">

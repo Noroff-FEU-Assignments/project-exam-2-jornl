@@ -7,9 +7,11 @@ import axios from "axios";
 import AuthContext from "@/contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSmile } from "@fortawesome/free-regular-svg-icons";
+import AlertBox from "../../Common/AlertBox";
 
 export default function Reactions({ reactions, post, getPosts }) {
   const [auth] = useContext(AuthContext);
+  const [error, setError] = useState(null);
   const [isShowing, setIsShowing] = useState(false);
 
   function addReaction(reaction) {
@@ -29,9 +31,13 @@ export default function Reactions({ reactions, post, getPosts }) {
         getPosts();
       })
       .catch((error) => {
-        console.log(error);
+        setError(error);
       })
       .finally(() => setIsShowing(false));
+  }
+
+  if (error) {
+    return <AlertBox level="danger">{error.message}</AlertBox>;
   }
 
   return (

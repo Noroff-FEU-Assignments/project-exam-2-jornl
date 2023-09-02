@@ -32,7 +32,7 @@ export default function Posts() {
         setPosts(response.data);
       })
       .catch((error) => {
-        setError(error.toString());
+        setError(error);
       })
       .finally(() => {
         setIsLoading(false);
@@ -50,7 +50,7 @@ export default function Posts() {
   if (error) {
     return (
       <Container>
-        <AlertBox level="danger" message={error} />
+        <AlertBox level="danger">{error.message}</AlertBox>
       </Container>
     );
   }

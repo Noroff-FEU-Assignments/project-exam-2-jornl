@@ -42,7 +42,7 @@ export default function ToggleFollow({ user, following, updateProfile }) {
   }
 
   if (error) {
-    return <AlertBox level="danger" message={error} />;
+    return <AlertBox level="danger">{error}</AlertBox>;
   }
 
   return (

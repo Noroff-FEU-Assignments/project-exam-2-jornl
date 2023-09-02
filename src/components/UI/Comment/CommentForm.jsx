@@ -50,7 +50,7 @@ export default function CommentForm({ post, getPosts }) {
   if (error) {
     return (
       <Container>
-        <AlertBox level="danger" message={error} />
+        <AlertBox level="danger">{error}</AlertBox>
       </Container>
     );
   }

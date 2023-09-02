@@ -35,7 +35,7 @@ export default function Show() {
         setProfile(response.data);
       })
       .catch((error) => {
-        setError(error.toString());
+        setError(error);
       })
       .finally(() => {
         setIsLoading(false);
@@ -53,7 +53,7 @@ export default function Show() {
   if (error) {
     return (
       <Container>
-        <AlertBox message={error} level="danger" />
+        <AlertBox level="danger">{error.response.data.status}</AlertBox>
       </Container>
     );
   }

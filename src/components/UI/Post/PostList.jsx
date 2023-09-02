@@ -67,7 +67,7 @@ export default function PostList({ posts, avatar = "", getPosts }) {
                       <FontAwesomeIcon icon={faPencil} className="me-2" />
                       Edit
                     </Link>
-                    <DeletePost post={post.id} />
+                    <DeletePost post={post.id} getPosts={getPosts} />
                   </>
                 )}
               </div>

@@ -58,7 +58,7 @@ export default function PostForm({ post = {} }) {
   if (error) {
     return (
       <Container>
-        <AlertBox level="danger" message={error} />
+        <AlertBox level="danger">{error}</AlertBox>
       </Container>
     );
   }

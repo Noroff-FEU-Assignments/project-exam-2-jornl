@@ -1,31 +1,44 @@
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { baseApiUrl } from "@/data/App";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "@/contexts/AuthContext";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import AlertBox from "../../Common/AlertBox";
 
-export default function DeletePost({ post }) {
+export default function DeletePost({ post, getPosts }) {
   const [auth] = useContext(AuthContext);
+  const [error, setError] = useState(null);
   const url = `${baseApiUrl}/social/posts/${post}`;
   const navigate = useNavigate();
 
   function deletePost() {
-    axios
-      .delete(url, {
-        headers: {
-          Authorization: `Bearer ${auth.accessToken}`,
-        },
-      })
-      .then(() => {
-        navigate("/posts");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (confirm("Are you sure you want to delete this post?")) {
+      axios
+        .delete(url, {
+          headers: {
+            Authorization: `Bearer ${auth.accessToken}`,
+          },
+        })
+        .then(() => {
+          navigate("/posts");
+          getPosts();
+        })
+        .catch((error) => {
+          setError(error);
+        });
+    }
+  }
+
+  if (error) {
+    return (
+      <Container>
+        <AlertBox level="danger">{error.message}</AlertBox>
+      </Container>
+    );
   }
 
   return (
@@ -45,4 +58,5 @@ export default function DeletePost({ post }) {
 
 DeletePost.propTypes = {
   post: PropTypes.number,
+  getPosts: PropTypes.func,
 };

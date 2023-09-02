@@ -248,7 +248,7 @@ What do you think about the colors and appearance of the page?
 Any other feedback you would like to provide?
 You can either create your own user or use one of the test users that I have created:
 Username: jorn.usertest@stud.noroff.no
-Password: 12345678
+Password: <redacted>
 
 Note: The profiles and posts have been created by other students, so I unfortunately cannot control the content of those. However, I have created an avatar and banner image that will appear for those who haven't added them to their profile.
 
@@ -304,7 +304,7 @@ As for delivery I only have to complete this README and submit it to github, the
 
 ## Resources
 
-- [API documentation](https://noroff-api-docs.netlify.app/social-endpoints/)
+- [API documentation](https://docs.noroff.dev/)
 - [Vite documentation](https://vitejs.dev/guide/)
 - [React Bootstrap](https://react-bootstrap.netlify.app/)
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
