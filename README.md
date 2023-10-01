@@ -7,7 +7,7 @@ A social media platform for students at Noroff School of technology and digital 
 ## Description
 This project is designed so that you can get in touch with your fellow students, by:
 
-- Creating posts, with an images
+- Creating posts, with images
 - Comment on posts
 - React with multiple emojis on posts
 - Follow your favorite students
